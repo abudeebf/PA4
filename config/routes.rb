@@ -1,24 +1,32 @@
 SampleApp::Application.routes.draw do
 
+  resources :payements
+
+  resources :notebooks
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/signup',  to: 'users#new'
-
-  root to: 'static_pages#home'
-
+ match '/addnote', to:  'notebooks#new', as: "add_note"
+ match '/payfornote',to: 'payements#new', as:'add_payement'
+  root to: 'notebooks#index'
+  
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
-
+  resources :notebooks do 
+    resources :payements, only: [:new ,:create]
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
+
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @notebook.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @notebook.content %>
+</p>
+
+<p>
+  <b>Free:</b>
+  <%= @notebook.free %>
+</p>
+
+<p>
+  <b>Course:</b>
+  <%= @notebook.course %>
+</p>
+
+<p>
+  <b>Teacher:</b>
+  <%= @notebook.teacher %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @notebook.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_notebook_path(@notebook) %> |
+<%= link_to 'Back', notebooks_path %>

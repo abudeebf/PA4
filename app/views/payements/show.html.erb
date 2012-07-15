@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @payement.user_id %>
+</p>
+
+<p>
+  <b>Cardtype:</b>
+  <%= @payement.cardtype %>
+</p>
+
+<p>
+  <b>Cardnumber:</b>
+  <%= @payement.cardnumber %>
+</p>
+
+<p>
+  <b>Cvv:</b>
+  <%= @payement.cvv %>
+</p>
+
+<p>
+  <b>Expireat:</b>
+  <%= @payement.expireat %>
+</p>
+
+<p>
+  <b>Noteid:</b>
+  <%= @payement.noteid %>
+</p>
+
+
+<%= link_to 'Edit', edit_payement_path(@payement) %> |
+<%= link_to 'Back', payements_path %>

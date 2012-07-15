@@ -1,11 +1,14 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation,:year,:university,:major,:minor
   
   validates :name, presence: true, length: { maximum: 50 }
-  
+  has_many :notebooks
+  has_many :payements
   validates :email, presence: true
-  
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :university ,presence: true
+  validates :major ,presence: true
+  validates :year ,presence: true
+  VALID_EMAIL_REGEX = /\b[A-Za-z0-9._%-]+@[a-zA-Z0-9.-]+\.edu\b/
   
   validates :email, 
             format: { with: VALID_EMAIL_REGEX },
