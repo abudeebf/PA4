@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id ,:value => current_user.id %>
+    <%= f.hidden_field :noteid ,:value => @notebook.id%>
   </div>
   <div class="field">
-    <%= f.label :cardtype %><br />
+    <%= f.label "Card type"%><br />
     <%= f.text_field :cardtype %>
   </div>
   <div class="field">
-    <%= f.label :cardnumber %><br />
+    <%= f.label "Card number" %><br />
     <%= f.text_field :cardnumber %>
   </div>
   <div class="field">
@@ -28,13 +28,10 @@
     <%= f.number_field :cvv %>
   </div>
   <div class="field">
-    <%= f.label :expireat %><br />
+    <%= f.label "Expirte at" %><br />
     <%= f.date_select :expireat %>
   </div>
-  <div class="field">
-    <%= f.label :noteid %><br />
-    <%= f.number_field :noteid %>
-  </div>
+ 
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -5,9 +5,11 @@
     <th>Course</th>
     <th>Teacher</th>
     <th>Title</th>
-    <th>price</th>
     <th>Nerd</th>
-    <th> Acess </th>
+    <th>price</th>
+     <th> Acess </th>
+    
+  
   </tr>
 
 <% @notebooks.each do |notebook| %>
@@ -15,23 +17,26 @@
     <td><%= notebook.course %></td>
     <td><%= notebook.teacher %></td>
     <td><%= notebook.title %></td>
-    <% if notebook.free   %>
-    <td> Free </td>
-     <td><%= link_to 'Show', notebook %> </td>
-     <% else %>
-     <td> <%= notebook.price %> <%=link_to "  pay to show this note", add_payement_path %></td>
-     <% end %>
     <td><%= User.find( notebook.user_id).name %></td>
 
    
-     <% if current_user==(User.find( notebook.user_id))%>
+     <% if  !current_user.nil?  && current_user.id== notebook.user_id%>
+     <td><%= link_to 'Show', notebook %> 
     <%= link_to 'Edit', edit_notebook_path(notebook) %>
-    <%= link_to 'Destroy', notebook, confirm: 'Are you sure?', method: :delete %>
-    <%end %>
+    <%= link_to 'Destroy', notebook, confirm: 'Are you sure?', method: :delete %> </td>
+    <% else%>
+     <% if notebook.free || ( !current_user.nil? && current_user.payements.where('noteid=?',notebook.id) .length==1 )%>
+    <td> Free </td>
+     <td><%= link_to 'Show', notebook %> </td>
+     <% else %>
+     <td> <%= notebook.price %> <%=link_to "  pay to show this note", new_notebook_payement_path(notebook) %></td>
+     <% end %>
+     <% end %>
+   
     </td>
   </tr>
 <% end %>
 </table>
 
-<br />
+
 

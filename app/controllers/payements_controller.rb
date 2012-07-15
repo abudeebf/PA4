@@ -25,8 +25,9 @@ class PayementsController < ApplicationController
   # GET /payements/new
   # GET /payements/new.json
   def new
+    @notebook=Notebook.find(params[:notebook_id])
     @payement = Payement.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @payement }
@@ -45,6 +46,7 @@ class PayementsController < ApplicationController
 
     respond_to do |format|
       if @payement.save
+
         format.html { redirect_to @payement, notice: 'Payement was successfully created.' }
         format.json { render json: @payement, status: :created, location: @payement }
       else
