@@ -13,7 +13,8 @@ SampleApp::Application.routes.draw do
  match '/addnote', to:  'notebooks#new', as: "add_note"
  match '/payfornote',to: 'payements#new', as:'add_payement'
   root to: 'notebooks#index'
-  
+  match '/mobiledownload.json', to:'notebooks#mobiledownload' 
+  match '/mobileupload.json', to:'notebooks#mobileupload' 
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'

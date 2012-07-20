@@ -21,9 +21,11 @@
 
    
      <% if  !current_user.nil?  && current_user.id== notebook.user_id%>
+     <td> <%=notebook.price%>
      <td><%= link_to 'Show', notebook %> 
     <%= link_to 'Edit', edit_notebook_path(notebook) %>
     <%= link_to 'Destroy', notebook, confirm: 'Are you sure?', method: :delete %> </td>
+
     <% else%>
      <% if notebook.free || ( !current_user.nil? && current_user.payements.where('noteid=?',notebook.id) .length==1 )%>
     <td> Free </td>
